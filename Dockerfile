@@ -8,4 +8,4 @@ RUN go get github.com/fcambus/rrda
 
 EXPOSE 80
 
-CMD ["rrda", "-port=80"]
+CMD ["rrda", "-host=0.0.0.0", "-port=80"]
