@@ -2,9 +2,9 @@ FROM golang:alpine
 
 MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
 
-RUN apk add --update git mercurial && rm -rf /var/cache/apk/*
-
-RUN go get github.com/fcambus/rrda
+RUN apk add --update --no-cache git mercurial \
+&& go get github.com/fcambus/rrda \
+&& apk del git mercurial
 
 EXPOSE 80
 
