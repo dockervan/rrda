@@ -2,11 +2,10 @@ FROM golang:alpine
 
 MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
 
-# Waiting PR: https://github.com/fcambus/rrda/pull/10
-ENV GODEBUG "netdns=cgo"
-
-RUN apk add --no-cache --virtual .build-deps git mercurial \
-&& go get github.com/fcambus/rrda \
+# Waiting following PR to remove -tags netcgo option
+# https://github.com/fcambus/rrda/pull/10
+RUN apk add --no-cache --virtual .build-deps git mercurial gcc musl-dev \
+&& go get -tags netcgo github.com/fcambus/rrda \
 && apk del .build-deps
 
 EXPOSE 80
