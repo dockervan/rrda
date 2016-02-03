@@ -2,6 +2,9 @@ FROM golang:alpine
 
 MAINTAINER Sullivan SENECHAL <soullivaneuh@gmail.com>
 
+# Waiting PR: https://github.com/fcambus/rrda/pull/10
+ENV GODEBUG "netdns=cgo"
+
 RUN apk add --update --no-cache git mercurial \
 && go get github.com/fcambus/rrda \
 && apk del git mercurial
